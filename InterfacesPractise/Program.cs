@@ -10,7 +10,7 @@ namespace InterfacesPractise
     {
         static void Main(string[] args)
         {
-            Array array = new Array(5);
+            Array array = new Array(20);
             array.Random(10, 99);
             array.Show();
             Console.WriteLine("Max - " + array.Max());
@@ -28,7 +28,14 @@ namespace InterfacesPractise
             Console.WriteLine("Array was sorted again: ");
             array.SortDesc();
             array.Show();
-
+            Console.WriteLine("There are " + array.Less(25) + " elements in the array that less than 25.");
+            Console.WriteLine("There are " + array.Greated(25) + " elements in the array that grater than 25.");
+            Console.WriteLine("Even elements: ");
+            array.ShowEven();
+            Console.WriteLine("Odd elements: ");
+            array.ShowOdd();
+            Console.WriteLine("There are " + array.CountDistinct() + " unique elements in the array.");
+            Console.WriteLine("There are " + array.EqualToValue(value) + " elements that equal to " + value);
 
         }
     }

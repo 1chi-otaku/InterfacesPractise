@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InterfacesPractise
 {
-    class Array : IOutput, IMath, Isort
+    class Array : IOutput, IMath, Isort, ICalc, IOutput2, ICalc2
     {
         int[] array;
 
@@ -125,6 +126,83 @@ namespace InterfacesPractise
         {
             if (isAsc == true) SortAsc();
             else SortDesc();
+        }
+
+        public int Less(int valueToCompare)
+        {
+            int less = 0;
+            foreach (var item in array)
+                if (item < valueToCompare) less++;
+            return less;
+        }
+
+        public int Greated(int valueToCompare)
+        {
+            int greater = 0;
+            foreach (var item in array)
+                if (item > valueToCompare) greater++;
+            return greater;
+        }
+
+        public void ShowEven()
+        {
+            foreach (var item in array)
+            {
+                if(item %2 == 0)
+                {
+                    Console.Write(item + " ");
+                }
+               
+            }
+            Console.WriteLine();
+        }
+
+        public void ShowOdd()
+        {
+            foreach (var item in array)
+            {
+                if (item % 2 != 0)
+                {
+                    Console.Write(item + " ");
+                }
+
+            }
+            Console.WriteLine();
+        }
+
+        public int CountDistinct()
+        {
+            int count = 0;
+            int countUnique = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                count = 0;
+                for (int j = 0; j < array.Length; j++)
+                    if (array[i] == array[j])
+                        count++;
+                if (count == 1)
+                {
+                    countUnique++;
+                    Console.Write(array[i] + " ");
+                }
+            }
+
+            return countUnique;
+
+
+        }
+
+        public int EqualToValue(int valueToCompare)
+        {
+            int equaltovalue = 0;
+
+            foreach (var item in array)
+            {
+                if(item == valueToCompare) equaltovalue++;
+            }
+
+            return equaltovalue;
         }
     }
 }
